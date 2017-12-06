@@ -5,16 +5,72 @@
   </div>
 </div>
 <div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <input type="text" class="form-control ng-valid ng-dirty" ng-model="searchKeyword">
+  <div id="searchContainer" class="row">
+    <div id="searchInput" class="col-md-9">
+      <input id="searchField" type="text" class="form-control ng-valid ng-dirty" ng-model="searchKeyword">
     </div>
-    <div class="col-md-3">
-      <button type="button" class="btn btn-primary btn-s">
+    <div id="searchBtn" class="col-md-3">
+      <button type="button" class="btn btn-primary btn-s" (click)="search()">
         <span class="fa fa-search">
         </span>
         Search
       </button>
+    </div>
+  </div>
+  <div id="searchResult" class="row">
+    <div class="m-5">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>
+              Placeholder 1
+            </th>
+            <th>
+              Placeholder 2
+            </th>
+            <th>
+              Placeholder 3
+            </th>
+            <th>
+              Placeholder 4
+            </th>
+            <th>
+              Placeholder 5
+            </th>
+            <th>
+              Placeholder 6
+            </th>
+            <th>
+              Placeholder 7
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              Placeholder
+            </td>
+            <td>
+              Placeholder
+            </td>
+            <td>
+              Placeholder
+            </td>
+            <td>
+              Placeholder
+            </td>
+            <td>
+              Placeholder
+            </td>
+            <td>
+              Placeholder
+            </td>
+            <td>
+              Placeholder
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

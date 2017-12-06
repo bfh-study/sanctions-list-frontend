@@ -11,4 +11,8 @@ export class SlSearchComponent implements OnInit {
   ngOnInit() {
   }
 
+  search(): void {
+    
+  }
+
 }
