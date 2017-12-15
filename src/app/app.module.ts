@@ -17,6 +17,9 @@ import { FileUploadModule } from 'ng2-file-upload/file-upload/file-upload.module
     SlPublicModule,
     FileUploadModule
   ],
+  exports: [
+    FileUploadModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
