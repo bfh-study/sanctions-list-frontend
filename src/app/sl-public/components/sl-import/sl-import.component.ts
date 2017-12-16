@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FileUploader, FileItem } from 'ng2-file-upload';
 
-const URL = 'http://localhost:8080/api/file/upload/';
+const URL = 'http://localhost:8080/api/file/upload';
 
 @Component({
     selector: 'sl-import',
@@ -57,6 +57,10 @@ export class SlImportComponent {
         item.formData = {
             "source": event.target.value
         };
+
+        if(item.formData.source != this.sources[0].toString()){
+            this.hasError = false;
+        }
     }
 
     remove(file: FileItem): void {
