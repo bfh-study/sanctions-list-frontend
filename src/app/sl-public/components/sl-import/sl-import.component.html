@@ -25,7 +25,7 @@
     <table class="table">
       <thead>
         <tr>
-          <th width="50%">Name</th>
+          <th width="40%">Name</th>
           <th>Size</th>
           <th>Progress</th>
           <th>Status</th>
@@ -58,13 +58,12 @@
             </span>
           </td>
           <td>
-            <select class="form-control" name="slSource">
-              <option value="SECO">SECO</option>
-              <option value="EU">EU</option>
+            <select class="form-control" name="slSource" (change)="onSelectedSourceChanged($event, item)" [disabled]="item.isReady || item.isUploading || item.isSuccess || checkFileExt(item.file.type)">
+              <option *ngFor="let source of sources">{{source}}</option>
             </select>
           </td>
           <td nowrap>
-            <button type="button" class="btn btn-success btn-xs" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess || checkFileExt(item.file.type)">
+            <button type="button" class="btn btn-success btn-xs" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess || checkFileExt(item.file.type) || checkSource(item)">
               <span class="fa fa-upload">
 
               </span>
