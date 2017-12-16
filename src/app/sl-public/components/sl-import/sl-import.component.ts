@@ -18,6 +18,10 @@ export class SlImportComponent {
         this.uploader = new FileUploader({
             method: 'POST',
             url: URL,
+            headers: [{
+                name: 'slSource',
+                value: 'EU'
+            }]
         });
     }
 
