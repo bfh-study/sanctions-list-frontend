@@ -3,6 +3,8 @@ import {Routes, RouterModule} from '@angular/router';
 
 import { SlWelcomeComponent } from './components/sl-welcome/sl-welcome.component';
 import { SlImportComponent } from './components/sl-import/sl-import.component';
+import { SlSearchComponent } from './components/sl-search/sl-search.component';
+import { SlRestServiceComponent } from './components/sl-rest-service/sl-rest-service.component';
 
 const routes: Routes = [
     {
@@ -11,6 +13,12 @@ const routes: Routes = [
     }, {
         path: 'import',
         component: SlImportComponent
+    }, {
+        path: 'search',
+        component: SlSearchComponent
+    }, {
+        path: 'rest',
+        component: SlRestServiceComponent
     }
 ];
 

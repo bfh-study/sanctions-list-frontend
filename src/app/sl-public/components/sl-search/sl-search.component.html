@@ -1,0 +1,77 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">Browse in Sanctionslist</h1>
+    <p class="lead">On this page you can search a person, ship or organisation.</p>
+  </div>
+</div>
+<div class="container">
+  <div id="searchContainer" class="row">
+    <div id="searchInput" class="col-md-9">
+      <input type="text" id="searchTxt" class="form-control ng-valid ng-dirty" [(ngModel)]="keyWord" />
+    </div>
+    <div id="searchBtn" class="col-md-3">
+      <button type="button" class="btn btn-primary btn-s" (click)="search(keyWord)">
+        <span class="fa fa-search">
+        </span>
+        Search
+      </button>
+    </div>
+  </div>
+  <div id="searchResult" class="row" *ngIf="response">
+    <h1>{{response}}</h1>
+    <!--
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>
+              Placeholder 1
+            </th>
+            <th>
+              Placeholder 2
+            </th>
+            <th>
+              Placeholder 3
+            </th>
+            <th>
+              Placeholder 4
+            </th>
+            <th>
+              Placeholder 5
+            </th>
+            <th>
+              Placeholder 6
+            </th>
+            <th>
+              Placeholder 7
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              Placeholder
+            </td>
+            <td>
+              Placeholder
+            </td>
+            <td>
+              Placeholder
+            </td>
+            <td>
+              Placeholder
+            </td>
+            <td>
+              Placeholder
+            </td>
+            <td>
+              Placeholder
+            </td>
+            <td>
+              Placeholder
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    -->
+  </div>
+</div>
