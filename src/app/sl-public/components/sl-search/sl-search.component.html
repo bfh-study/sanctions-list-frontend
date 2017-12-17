@@ -7,10 +7,10 @@
 <div class="container">
   <div id="searchContainer" class="row">
     <div id="searchInput" class="col-md-9">
-      <input id="searchField" type="text" class="form-control ng-valid ng-dirty" ng-model="searchKeyword">
+      <input type="text" id="searchTxt" class="form-control ng-valid ng-dirty" [(ngModel)]="keyWord" />
     </div>
     <div id="searchBtn" class="col-md-3">
-      <button type="button" class="btn btn-primary btn-s" (click)="search()">
+      <button type="button" class="btn btn-primary btn-s" (click)="search(keyWord)">
         <span class="fa fa-search">
         </span>
         Search
@@ -18,7 +18,9 @@
     </div>
   </div>
   <div id="searchResult" class="row">
-    <div class="m-5">
+    <div class="m-5" *ngIf="response">
+        <h1>{{response}}</h1>
+      <!--
       <table class="table table-hover">
         <thead>
           <tr>
@@ -71,6 +73,7 @@
           </tr>
         </tbody>
       </table>
+    -->
     </div>
   </div>
 </div>

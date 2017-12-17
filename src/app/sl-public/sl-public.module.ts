@@ -7,12 +7,14 @@ import { SlWelcomeComponent } from './components/sl-welcome/sl-welcome.component
 import { SlNavbarComponent } from './components/sl-navbar/sl-navbar.component';
 import { SlImportComponent } from './components/sl-import/sl-import.component';
 import { SlSearchComponent } from './components/sl-search/sl-search.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
         CommonModule,
         SlPublicRouting,
-        FileUploadModule
+        FileUploadModule,
+        FormsModule
     ],
     declarations: [
         SlNavbarComponent,
