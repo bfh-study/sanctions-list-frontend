@@ -18,7 +18,8 @@ export class SlNavbarComponent {
         this.navbarItems = [
             new NavbarItem('Home', 'welcome'),
             new NavbarItem('Import', 'import'),
-            new NavbarItem('Search', 'search')
+            new NavbarItem('Search', 'search'),
+            new NavbarItem('RestService', 'rest')
         ];
     }
 }

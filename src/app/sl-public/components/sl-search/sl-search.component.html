@@ -17,10 +17,9 @@
       </button>
     </div>
   </div>
-  <div id="searchResult" class="row">
-    <div class="m-5" *ngIf="response">
-        <h1>{{response}}</h1>
-      <!--
+  <div id="searchResult" class="row" *ngIf="response">
+    <h1>{{response}}</h1>
+    <!--
       <table class="table table-hover">
         <thead>
           <tr>
@@ -74,6 +73,5 @@
         </tbody>
       </table>
     -->
-    </div>
   </div>
 </div>

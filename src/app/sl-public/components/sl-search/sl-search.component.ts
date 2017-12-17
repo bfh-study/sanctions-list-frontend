@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
 const URL = 'http://localhost:8080/api/search/';
 
@@ -11,7 +10,7 @@ const URL = 'http://localhost:8080/api/search/';
 
 export class SlSearchComponent {
 
-  public response: String;
+  public response: string;
 
   constructor(private http: Http) { }
 
