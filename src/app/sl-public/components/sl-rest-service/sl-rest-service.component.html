@@ -1,5 +1,5 @@
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
+  <div class="container text-center">
     <h1 class="display-3">Add RestService to your Webshop!</h1>
     <p class="lead">On this page we explain how do you can use our restservice in your Webshop.</p>
   </div>
@@ -16,7 +16,7 @@
       <li style="margin-bottom: 10px">if the person is in our DB, it will return TRUE (as String)</li>
       <li>if the person is not listed in your DB, it will return FALSE (also as String)</li>
     </ol>
-    <p>In the following part you can test our Webservice. Enter for example <b>Kim Jong-un</b> for an invalid example and hopefully your name for an valid example ;-)</p>
+    <p>In the following part you can test our Webservice. Enter for example <b>Robert Mugabe</b> for an invalid example and hopefully your name for an valid example ;-)</p>
   </div>
   <br />
   <div class="row">
@@ -46,11 +46,11 @@
     </div>
     <div class="col-md-5" *ngIf="response">
       <br />
-      <span class="fa fa-check-circle" *ngIf="isAllowed">
-        {{response}}
+      <span class="fa fa-check-circle" *ngIf="response.isAllowed()">
+        <p>max. Score {{response.getMaxScore()}}</p>
       </span>
-      <span class="fa fa-exclamation-circle" *ngIf="!isAllowed">
-        {{response}}
+      <span class="fa fa-exclamation-circle" *ngIf="!response.isAllowed()">
+        <p>max. Score {{response.getMaxScore()}}</p>
       </span>
     </div>
   </div>

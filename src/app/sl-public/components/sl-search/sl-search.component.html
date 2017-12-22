@@ -1,15 +1,15 @@
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
+  <div class="container text-center">
     <h1 class="display-3">Browse in Sanctionslist</h1>
     <p class="lead">On this page you can search a person, ship or organisation.</p>
   </div>
 </div>
-<div class="container">
+<div class="container text-center">
   <div id="searchContainer" class="row">
-    <div id="searchInput" class="col-md-9">
+    <div id="searchInput" class="col-md-10">
       <input type="text" id="searchTxt" class="form-control ng-valid ng-dirty" [(ngModel)]="keyWord" />
     </div>
-    <div id="searchBtn" class="col-md-3">
+    <div id="searchBtn" class="col-md-2">
       <button type="button" class="btn btn-primary btn-s" (click)="search(keyWord)">
         <span class="fa fa-search">
         </span>
@@ -17,61 +17,45 @@
       </button>
     </div>
   </div>
-  <div id="searchResult" class="row" *ngIf="response">
-    <h1>{{response}}</h1>
-    <!--
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>
-              Placeholder 1
-            </th>
-            <th>
-              Placeholder 2
-            </th>
-            <th>
-              Placeholder 3
-            </th>
-            <th>
-              Placeholder 4
-            </th>
-            <th>
-              Placeholder 5
-            </th>
-            <th>
-              Placeholder 6
-            </th>
-            <th>
-              Placeholder 7
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              Placeholder
-            </td>
-            <td>
-              Placeholder
-            </td>
-            <td>
-              Placeholder
-            </td>
-            <td>
-              Placeholder
-            </td>
-            <td>
-              Placeholder
-            </td>
-            <td>
-              Placeholder
-            </td>
-            <td>
-              Placeholder
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    -->
+  <br />
+  <div id="searchResult" class="row text-center" *ngIf="isResponseOk">
+    <h1>Search results:</h1>
+    <br />
+    <br />
+    <br />
+  </div>
+  <div class="row text-center">
+    <div class="card" *ngFor="let entity of searchResults"  style="min-width: 900px">
+      <div class="card-body" width="1700px">
+        <h5>Entity</h5>
+        <b>Source: </b> {{entity.sanctionProgram.origin}}
+        <div>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Whole Name</th>
+                <th>Gender</th>
+                <th>Title</th>
+                <th>Function</th>
+                <th>Language</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let info of entity.entityInfo">
+                <td>{{info.firstName}}</td>
+                <td>{{info.lastName}}</td>
+                <td>{{info.wholeName}}</td>
+                <td>{{info.gender}}</td>
+                <td>{{info.title}}</td>
+                <td>{{info.function}}</td>
+                <td>{{info.language}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
