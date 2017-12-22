@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Clipboard } from 'ts-clipboard';
+import { SlRestResponseModel } from './sl-rest-response.model';
 
 const URL = 'http://localhost:8080/api/allowed/';
 
@@ -10,8 +11,7 @@ const URL = 'http://localhost:8080/api/allowed/';
 })
 export class SlRestServiceComponent {
 
-  response: string;
-  isAllowed: boolean;
+  response: SlRestResponseModel;
   firstName: string = '';
   lastName: string = '';
 
@@ -20,13 +20,8 @@ export class SlRestServiceComponent {
   submit(firstName: string, lastName: string): void {
     if (firstName != '' && lastName != '') {
       this.http.get(URL + firstName + "/" + lastName).subscribe(result => {
-        this.response = result.text();
-
-        if (this.response.includes('false')) {
-          this.isAllowed = false;
-        } else {
-          this.isAllowed = true;
-        }
+        let jsonResponse: any = result.json();
+        this.response = new SlRestResponseModel(jsonResponse.maxScore, jsonResponse.allowed);
       });
     }
   }

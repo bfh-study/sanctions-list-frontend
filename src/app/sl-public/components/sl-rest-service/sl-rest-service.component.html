@@ -46,11 +46,11 @@
     </div>
     <div class="col-md-5" *ngIf="response">
       <br />
-      <span class="fa fa-check-circle" *ngIf="isAllowed">
-        {{response}}
+      <span class="fa fa-check-circle" *ngIf="response.isAllowed()">
+        <p>max. Score {{response.getMaxScore()}}</p>
       </span>
-      <span class="fa fa-exclamation-circle" *ngIf="!isAllowed">
-        {{response}}
+      <span class="fa fa-exclamation-circle" *ngIf="!response.isAllowed()">
+        <p>max. Score {{response.getMaxScore()}}</p>
       </span>
     </div>
   </div>
