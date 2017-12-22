@@ -1,0 +1,24 @@
+/* 
+* Global styling
+*/
+@import '~sass/variables';
+
+html{
+    position: relative;
+    min-height: 100%
+}
+
+body.fixed-nav{
+    padding-top: $navbar-height;
+}
+
+.content-wrapper{
+    min-height: calc(100vh - $navbar-heigth);
+    padding-top: 1rem;
+    margin: 0px 0px 2*$footer-height 0px;
+}
+
+.error-import-info{
+    color: #FF0000;
+    font-weight: bold;
+}

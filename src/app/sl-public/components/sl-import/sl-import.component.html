@@ -1,0 +1,111 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container text-center">
+    <h1 class="display-3">Import Sanctionslist</h1>
+    <br />
+    <p class="lead">On this page you can Import a new sanctionlist. But be aware the file
+      <b>must be</b> a
+      <b>.xml</b> file.
+      <br /> You can get the sanctionlist from the
+      <a href="https://data.europa.eu/euodp/en/data/dataset/consolidated-list-of-persons-groups-and-entities-subject-to-eu-financial-sanctions"
+        target="_blank">EU</a> or
+      <a href="https://www.seco.admin.ch/seco/de/home/Aussenwirtschaftspolitik_Wirtschaftliche_Zusammenarbeit/Wirtschaftsbeziehungen/exportkontrollen-und-sanktionen/sanktionen-embargos.html"
+        target="_blank">SECO</a> website.</p>
+  </div>
+</div>
+<div class="container">
+  <label class="btn btn-primary btn-s">
+    <span class="fa fa-search"></span>
+    Browse&hellip;
+    <input type="file" accept=".xml" ng2FileSelect [uploader]="uploader" style="display: none;" multiple />
+  </label>
+  <br />
+  <br />
+  <div class="container">
+    <h3>Upload queue</h3>
+    <p>Queue length: {{uploader?.queue?.length}}</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="40%">Name</th>
+          <th>Size</th>
+          <th>Progress</th>
+          <th>Status</th>
+          <th>Source</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of uploader.queue">
+          <td valign="middle">
+            <strong *ngIf="checkFileExt(item.file.type);" class="error-import-info">{{item?.file?.name}}</strong>
+            <strong *ngIf="!checkFileExt(item.file.type)">{{item?.file?.name}}</strong>
+          </td>
+          <td valign="middle" *ngIf="checkFileExt(item.file.type);" class="error-import-info">{{item?.file?.size/1024/1024 | number:'.2'}} MB</td>
+          <td *ngIf="!checkFileExt(item.file.type)">{{item?.file?.size/1024/1024 | number:'.2'}} MB</td>
+          <td valign="middle">
+            <div class="progress" style="margin-bottom: 0;">
+              <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%'}"></div>
+            </div>
+          </td>
+          <td class="text-center">
+            <span *ngIf="item.isSuccess">
+              <i class="fa fa-check"></i>
+            </span>
+            <span *ngIf="item.isCancel">
+              <i class="fa fa-ban"></i>
+            </span>
+            <span *ngIf="checkFileExt(item.file.type)">
+              <i class="fa fa-warning" title="file must be a xml!!"></i>
+            </span>
+          </td>
+          <td>
+            <select class="form-control" name="slSource" (change)="onSelectedSourceChanged($event, item)" [disabled]="item.isReady || item.isUploading || item.isSuccess || checkFileExt(item.file.type)">
+              <option *ngFor="let source of sources">{{source}}</option>
+            </select>
+          </td>
+          <td nowrap>
+            <button type="button" class="btn btn-success btn-xs" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess || checkFileExt(item.file.type) || checkSource(item)">
+              <span class="fa fa-upload">
+
+              </span>
+            </button>
+            <button type="button" class="btn btn-warning btn-xs" (click)="item.cancel()" [disabled]="!item.isUploading">
+              <span class="fa fa-ban">
+
+              </span>
+            </button>
+            <button type="button" class="btn btn-danger btn-xs" (click)="remove(item)" [disabled]="item.isUploading">
+              <span class="fa fa-trash">
+
+              </span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <p>Queue progress:</p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%'}"></div>
+      </div>
+    </div>
+    <br />
+    <div>
+      <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="uploader.isReady || uploader.isUploading || uploader.isSuccess || !uploader.queue.length || hasError">
+        <span class="fa fa-upload">
+        </span>
+        Upload
+      </button>
+      <button type="button" class="btn btn-warning btn-s" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+        <span class="fa fa-ban">
+        </span>
+        Cancel
+      </button>
+      <button type="button" class="btn btn-danger btn-s" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length || uploader.isUploading">
+        <span class="fa fa-trash">
+        </span>
+        Remove
+      </button>
+    </div>
+  </div>
+  

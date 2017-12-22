@@ -1,0 +1,72 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container text-center">
+    <h1 class="display-3">Add RestService to your Webshop!</h1>
+    <p class="lead">On this page we explain how do you can use our restservice in your Webshop.</p>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <h2>How to add to your website</h2>
+  </div>
+  <br />
+  <div class="row">
+    <ol>
+      <li>Add the follwing URL to your code: http://localhost:8080/api/allowed/firstName/lastName <button class="btn btn-info btn-xs" (click)="copyToClipboard()"><i class="fa fa-clipboard"></i></button></li>
+      <li style="margin-bottom: 10px">the PathParam <i>firstName</i> and <i>lastName</i> must set by you</li>
+      <li style="margin-bottom: 10px">if the person is in our DB, it will return TRUE (as String)</li>
+      <li>if the person is not listed in your DB, it will return FALSE (also as String)</li>
+    </ol>
+    <p>In the following part you can test our Webservice. Enter for example <b>Robert Mugabe</b> for an invalid example and hopefully your name for an valid example ;-)</p>
+  </div>
+  <br />
+  <div class="row">
+    <h2>Example</h2>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md-5">
+      <label id="firstName">Firstname:</label>
+      <input type="text" id="firstName" class="form-control ng-valid ng-dirty" [(ngModel)]="firstName" required />
+    </div>
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-5">
+      <p>
+        <b>Is User
+          <i>{{firstName}} {{lastName}}</i> allowed ?</b>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <label id="lastName">Lastname:</label>
+      <input type="text" id="lastName" class="form-control ng-valid ng-dirty" [(ngModel)]="lastName" required />
+    </div>
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-5" *ngIf="response">
+      <br />
+      <span class="fa fa-check-circle" *ngIf="response.isAllowed()">
+        <p>max. Score {{response.getMaxScore()}}</p>
+      </span>
+      <span class="fa fa-exclamation-circle" *ngIf="!response.isAllowed()">
+        <p>max. Score {{response.getMaxScore()}}</p>
+      </span>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md-5 text-right">
+      <button type="button" class="btn btn-danger btn-s" (click)="clear()">
+        <span class="fa fa-trash">
+        </span>
+        Clear
+      </button>
+      <button type="button" class="btn btn-primary btn-s" (click)="submit(firstName, lastName)" >
+        <span class="fa fa-arrow-right">
+        </span>
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
