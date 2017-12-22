@@ -8,10 +8,6 @@ html{
     min-height: 100%
 }
 
-body{
-    overflow-x: hidden;
-}
-
 body.fixed-nav{
     padding-top: $navbar-height;
 }
