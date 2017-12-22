@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Clipboard } from 'ts-clipboard';
 import { SlRestResponseModel } from './sl-rest-response.model';
+import { AppSettings } from '../../../app.settings';
 
-const URL = 'http://localhost:8080/api/allowed/';
+const URL = AppSettings.API_HOST + AppSettings.API_URL + '/allowed/';
 
 @Component({
   selector: 'sl-rest-service',

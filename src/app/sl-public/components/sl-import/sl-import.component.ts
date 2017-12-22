@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FileUploader, FileItem } from 'ng2-file-upload';
+import { AppSettings } from '../../../app.settings';
 
-const URL = 'http://localhost:8080/api/file/upload';
+const URL = AppSettings.API_HOST + AppSettings.API_URL + '/file/upload';
 
 @Component({
     selector: 'sl-import',

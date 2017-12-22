@@ -3,8 +3,9 @@ import { Http } from '@angular/http';
 import { RequestOptionsArgs } from '@angular/http/src/interfaces';
 import { SlSearchSanctionEntityModel } from './sl-search-sanction-entity.model';
 import { forEach } from '@angular/router/src/utils/collection';
+import { AppSettings } from '../../../app.settings';
 
-const URL = 'http://localhost:8080/api/search?query=';
+const URL = AppSettings.API_HOST + AppSettings.API_URL + '/search?query=';
 
 @Component({
   selector: 'sl-search',
